@@ -1,0 +1,136 @@
+Schedule:Compact,
+    CW LOOP TEMP SCHEDULE,   !- Name
+    TEMPERATURE,             !- Schedule Type Limits Name
+    Through: 12/31,          !- Field 1
+    For: Alldays,            !- Field 2
+    Until: 24:00, 6.67;      !- Field 4
+
+Schedule:Compact,
+    HW LOOP TEMP SCHEDULE,   !- Name
+    TEMPERATURE,             !- Schedule Type Limits Name
+    Through: 12/31,          !- Field 1
+    For: Alldays,            !- Field 2
+    Until: 24:00, 60.00;     !- Field 4
+
+Schedule:Compact,
+    HEATING SETPOINTS,       !- Name
+    TEMPERATURE,             !- Schedule Type Limits Name
+    Through: 12/31,          !- Field 1
+    For: Alldays,            !- Field 2
+    Until: 7:00, 15.00,      !- Field 4
+    Until: 17:00, 20.00,     !- Field 6
+    Until: 24:00, 15.00;     !- Field 8
+
+Schedule:Compact,
+    COOLING SETPOINTS,       !- Name
+    TEMPERATURE,             !- Schedule Type Limits Name
+    Through: 12/31,          !- Field 1
+    For: Alldays,            !- Field 2
+    Until: 7:00, 30.00,      !- Field 4
+    Until: 17:00, 24.00,     !- Field 6
+    Until: 24:00, 30.00;     !- Field 8
+
+Schedule:Compact,
+    Off,                      !- Name
+    FRACTION,                !- Schedule Type Limits Name
+    Through: 12/31,          !- Field 1
+    For: Alldays,            !- Field 2
+    Until: 24:00, 0;      !- Field 4
+
+Schedule:Compact,
+    ALWAYS_ON,               !- Name
+    FRACTION,                !- Schedule Type Limits Name
+    Through: 12/31,          !- Field 1
+    For: Alldays,            !- Field 2
+    Until: 24:00, 1.00;      !- Field 4
+	
+Schedule:Compact,
+    On,               !- Name
+    FRACTION,                !- Schedule Type Limits Name
+    Through: 12/31,          !- Field 1
+    For: Alldays,            !- Field 2
+    Until: 24:00, 1.00;      !- Field 4
+
+ScheduleTypeLimits,
+    Temperature,             !- Name
+    -60,                     !- Lower Limit Value
+    200,                     !- Upper Limit Value
+    CONTINUOUS,              !- Numeric Type
+    Temperature;             !- Unit Type
+
+ScheduleTypeLimits,
+    Control Type,            !- Name
+    0,                       !- Lower Limit Value
+    4,                       !- Upper Limit Value
+    DISCRETE;                !- Numeric Type
+
+ScheduleTypeLimits,
+    On/Off,                  !- Name
+    0,                       !- Lower Limit Value
+    1,                       !- Upper Limit Value
+    DISCRETE;                !- Numeric Type
+
+ScheduleTypeLimits,
+    Fraction,                  !- Name
+    0,                       !- Lower Limit Value
+    1,                       !- Upper Limit Value
+    CONTINUOUS;                !- Numeric Type
+	
+ScheduleTypeLimits,
+    Multiplier,                  !- Name
+    0,                       !- Lower Limit Value
+    9999,                       !- Upper Limit Value
+    CONTINUOUS;                !- Numeric Type
+
+Schedule:Compact,
+    Htg-SetP-Sch,            !- Name
+    Temperature,             !- Schedule Type Limits Name
+    Through: 12/31,          !- Field 1
+    For: SummerDesignDay,    !- Field 2
+    Until: 24:00, 16.7,      !- Field 4
+    For: WinterDesignDay,    !- Field 5
+    Until: 24:00, 22.2,      !- Field 7
+    For: WeekDays,           !- Field 8
+    Until: 6:00, 16.7,       !- Field 10
+    Until: 20:00, 22.2,      !- Field 12
+    Until: 24:00, 16.7,      !- Field 14
+    For: WeekEnds Holiday,   !- Field 15
+    Until: 24:00, 16.7,      !- Field 17
+    For: AllOtherDays,       !- Field 18
+    Until: 24:00, 16.7;      !- Field 20
+
+Schedule:Compact,
+    Clg-SetP-Sch,            !- Name
+    Temperature,             !- Schedule Type Limits Name
+    Through: 12/31,          !- Field 1
+    For: SummerDesignDay,    !- Field 2
+    Until: 24:00, 23.9,      !- Field 4
+    For: WinterDesignDay,    !- Field 5
+    Until: 24:00, 29.4,      !- Field 7
+    For: WeekDays,           !- Field 8
+    Until: 6:00, 29.4,       !- Field 10
+    Until: 20:00, 23.9,      !- Field 12
+    Until: 24:00, 29.4,      !- Field 14
+    For: WeekEnds Holiday,   !- Field 15
+    Until: 24:00, 29.4,      !- Field 17
+    For: AllOtherDays,       !- Field 18
+    Until: 24:00, 29.4;      !- Field 20
+
+Schedule:Compact,
+    Zone Control Type Sched, !- Name
+    Control Type,            !- Schedule Type Limits Name
+    Through: 12/31,          !- Field 1
+    For: AllDays,            !- Field 2
+    Until: 24:00, 4;         !- Field 4
+
+
+Schedule:Compact,
+    Min OA Sched,            !- Name
+    Fraction,                !- Schedule Type Limits Name
+    Through: 12/31,          !- Field 1
+    For: Weekdays SummerDesignDay WinterDesignDay,           !- Field 2
+    Until: 6:00, 0.00,       !- Field 4
+    Until: 18:00, 1.00,      !- Field 6
+    Until: 24:00, 0.00,      !- Field 8
+    For: Weekends CustomDay1 CustomDay2 Holidays,  !- Field 9
+    Until: 24:00, 0.00;      !- Field 11

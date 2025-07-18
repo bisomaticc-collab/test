@@ -1,0 +1,155 @@
+!-   ===========  ALL OBJECTS IN CLASS: VERSION ===========
+
+Version,8.9;
+
+!-   ===========  ALL OBJECTS IN CLASS: SIMULATIONCONTROL ===========
+
+
+Output:Table:SummaryReports,
+    AllSummary;              !- Report 1 Name
+
+OutputControl:Table:Style,
+    CommaAndHTML,            !- Column Separator
+    InchPound;               !- Unit Conversion
+
+OutputControl:ReportingTolerances,
+    0.555555555555556,       !- Tolerance for Time Heating Setpoint Not Met {deltaC}
+    0.555555555555556;       !- Tolerance for Time Cooling Setpoint Not Met {deltaC}
+	
+SimulationControl,
+    Yes,                      !- Do Zone Sizing Calculation
+    Yes,                      !- Do System Sizing Calculation
+    Yes,                      !- Do Plant Sizing Calculation
+    No,                     !- Run Simulation for Sizing Periods
+    Yes,                     !- Run Simulation for Weather File Run Periods
+    No,                      !- Do HVAC Sizing Simulation for Sizing Periods
+    1;                       !- Maximum Number of HVAC Sizing Simulation Passes
+
+!-   ===========  ALL OBJECTS IN CLASS: TIMESTEP ===========
+
+Timestep,4;
+!-   ===========  ALL OBJECTS IN CLASS: BUILDING ===========
+
+Building,
+    NONE,                    !- Name
+    ,                        !- North Axis {deg}
+    Suburbs,                 !- Terrain
+    0.04,                    !- Loads Convergence Tolerance Value
+    0.4,                     !- Temperature Convergence Tolerance Value {deltaC}
+    FullExterior,            !- Solar Distribution
+    25,                      !- Maximum Number of Warmup Days
+    6;                       !- Minimum Number of Warmup Days
+
+!-   ===========  ALL OBJECTS IN CLASS: SIZINGPERIOD:WEATHERFILEDAYS ===========
+
+SizingPeriod:WeatherFileDays,
+    cdd,                     !- Name
+    4,                       !- Begin Month
+    15,                      !- Begin Day of Month
+    11,                      !- End Month
+    15,                      !- End Day of Month
+    Monday,                  !- Day of Week for Start Day
+    Yes,                     !- Use Weather File Daylight Saving Period
+    Yes;                     !- Use Weather File Rain and Snow Indicators
+
+SizingPeriod:WeatherFileDays,
+    hdd,                     !- Name
+    11,                      !- Begin Month
+    15,                      !- Begin Day of Month
+    3,                       !- End Month
+    15,                      !- End Day of Month
+    Monday,                  !- Day of Week for Start Day
+    Yes,                     !- Use Weather File Daylight Saving Period
+    Yes;                     !- Use Weather File Rain and Snow Indicators
+!-   ===========  ALL OBJECTS IN CLASS: RUNPERIOD ===========
+
+RunPeriod,
+    1,                       !- Name
+    1,                       !- Begin Month
+    1,                       !- Begin Day of Month
+    1,                       !- End Month
+    31,                      !- End Day of Month
+    Monday,                  !- Day of Week for Start Day
+    Yes,                     !- Use Weather File Holidays and Special Days
+    Yes,                     !- Use Weather File Daylight Saving Period
+    No,                      !- Apply Weekend Holiday Rule
+    Yes,                     !- Use Weather File Rain Indicators
+    Yes;                     !- Use Weather File Snow Indicators
+
+
+!-   ===========  ALL OBJECTS IN CLASS: MATERIAL ===========
+
+Material,
+    m,                       !- Name
+    Rough,                   !- Roughness
+    0.2,                     !- Thickness {m}
+    0.5,                     !- Conductivity {W/m-K}
+    100,                     !- Density {kg/m3}
+    1000,                    !- Specific Heat {J/kg-K}
+    0.9,                     !- Thermal Absorptance
+    0.7,                     !- Solar Absorptance
+    0.7;                     !- Visible Absorptance
+
+
+!-   ===========  ALL OBJECTS IN CLASS: WINDOWMATERIAL:SIMPLEGLAZINGSYSTEM ===========
+
+WindowMaterial:SimpleGlazingSystem,
+    g,                       !- Name
+    3,                       !- U-Factor {W/m2-K}
+    0.5,                     !- Solar Heat Gain Coefficient
+    0.5;                     !- Visible Transmittance
+
+
+!-   ===========  ALL OBJECTS IN CLASS: CONSTRUCTION ===========
+
+Construction,
+    WALL-1,                  !- Name
+    m;                       !- Outside Layer
+
+Construction,
+    WALL-2,                  !- Name
+    m;                       !- Outside Layer
+	
+Construction,
+    ROOF-1,                  !- Name
+    m;                       !- Outside Layer
+	
+Construction,
+    ROOF-2,                  !- Name
+    m;                       !- Outside Layer
+	
+Construction,
+    ugWALL-1,                  !- Name
+    m;                       !- Outside Layer
+
+Construction,
+    Ext-FLR-1,                  !- Name
+    m;                       !- Outside Layer
+	
+Construction,
+    Insul-INT-FLR-1,                  !- Name
+    m;                       !- Outside Layer
+
+Construction,
+    ugFLR-1,                  !- Name
+    m;                       !- Outside Layer
+
+Construction,
+    INT-WALL-1,              !- Name
+    m;                       !- Outside Layer
+
+Construction,
+    SLAB-1,                  !- Name
+    m;                       !- Outside Layer
+
+Construction,
+    INT-FLR-1,               !- Name
+    m;                       !- Outside Layer
+
+Construction,
+    CLNG-1,                  !- Name
+    m;                       !- Outside Layer
+
+Construction,
+    WINDOW-1,                !- Name
+    g;                       !- Outside Layer
